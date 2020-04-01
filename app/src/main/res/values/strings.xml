@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Status</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="play_more_app">https://play.google.com/store/apps</string>
+
+    <string name="image">Image</string>
+    <string name="video">Video</string>
+    <string name="rate_app">Rate App</string>
+    <string name="more_app">More App</string>
+    <string name="share_app">Share App</string>
+    <string name="privacy_policy">Privacy Policy</string>
+
+    <string name="Please_click_BACK_again_to_exit">Please click BACK again to exit</string>
+    <string name="exit">Exit</string>
+
+    <string name="Let_me_recommend_you_this_application">Let me recommend you this application</string>
+    <string name="download">Download</string>
+    <string name="set_as_wallpaper">Set Wallpaper</string>
+    <string name="profile">profile</string>
+    <string name="delete">Delete</string>
+    <string name="no_data">No Data Found</string>
+    <string name="share">Share</string>
+    <string name="loading">Loading....</string>
+    <string name="start">Start</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+    <string name="pleas_allow_permission">Pleas allow permission</string>
+    <string name="allow_permission">Allow permission</string>
+    <string name="intro_one">intro one</string>
+    <string name="intro_two">intro two</string>
+
+</resources>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/image"
+            android:icon="@drawable/ic_wallpaper"
+            android:title="@string/image" />
+        <item
+            android:id="@+id/video"
+            android:icon="@drawable/my_video"
+            android:title="@string/video" />
+        <item
+            android:id="@+id/download"
+            android:icon="@drawable/ic_download"
+            android:title="@string/download" />
+        <item
+            android:id="@+id/share"
+            android:icon="@drawable/ic_shareside"
+            android:title="@string/share_app" />
+        <item
+            android:id="@+id/rate_app"
+            android:icon="@drawable/ic_rate"
+            android:title="@string/rate_app" />
+        <item
+            android:id="@+id/more_app"
+            android:icon="@drawable/ic_more"
+            android:title="@string/more_app" />
+        <item
+            android:id="@+id/privacy_policy"
+            android:icon="@drawable/ic_privacy"
+            android:title="@string/privacy_policy" />
+    </group>
+
+</menu>

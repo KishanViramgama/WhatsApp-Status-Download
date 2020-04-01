@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+
+    <com.app.status.Util.TouchImageView
+        android:id="@+id/imageView_image_show_adapter"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/place_holder" />
+
+    <ImageView
+        android:id="@+id/imageView_play"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/play" />
+
+</RelativeLayout>

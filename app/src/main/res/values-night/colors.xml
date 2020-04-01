@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#000000</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#000000</color>
+    <color name="toolbar_color">#323336</color>
+    <color name="nav_drawer">#323336</color>
+    <color name="drawar_item">#FFFFFF</color>
+    <color name="drawar_item_selected">#7E57C2</color>
+    <color name="black">#000000</color>
+    <color name="app_background">#000000</color>
+    <color name="about_us_Text">#FFFFFF</color>
+    <color name="about_us_SubText">#8b8b8b</color>
+    <color name="SmoothProgressBar">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="tabView_text">#99FFFFFF</color>
+    <color name="tab_indicator">#FFFFFF</color>
+    <color name="progressBar_color">#FFFFFF</color>
+    <color name="activate_color">#7E57C2</color>
+    <color name="in_activate_color">#FFFFFF</color>
+
+    <array name="array_dot_active">
+        <item>@color/activate_color</item>
+        <item>@color/activate_color</item>
+    </array>
+
+    <array name="array_dot_inactive">
+        <item>@color/in_activate_color</item>
+        <item>@color/in_activate_color</item>
+    </array>
+
+</resources>
