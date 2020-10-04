@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.view.Display;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 
 import com.app.status.Interface.OnClick;
@@ -25,8 +26,9 @@ public class Method {
 
     private SharedPreferences pref;
     public SharedPreferences.Editor editor;
-    private final String myPreference = "link";
-    public String pref_link = "pref_link";
+    private final String myPreference = "status";
+    public String pref_link = "link";
+    private String is_first = "is_first";
 
     public Method(Activity activity) {
         this.activity = activity;
@@ -41,6 +43,13 @@ public class Method {
         editor = pref.edit();
     }
 
+    //rtl
+    public void forceRTLIfSupported() {
+        if (activity.getResources().getString(R.string.isRTL).equals("true")) {
+            activity.getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+        }
+    }
+
     public boolean isAppWA() {
         String packageName = "com.whatsapp";
         Intent mIntent = activity.getPackageManager().getLaunchIntentForPackage(packageName);
@@ -51,6 +60,15 @@ public class Method {
         String packageName = "com.whatsapp.w4b";
         Intent mIntent = activity.getPackageManager().getLaunchIntentForPackage(packageName);
         return mIntent != null;
+    }
+
+    public void setFirstTimeLaunch(boolean isFirstTime) {
+        editor.putBoolean(is_first, isFirstTime);
+        editor.commit();
+    }
+
+    public boolean isFirstTimeLaunch() {
+        return pref.getBoolean(is_first, true);
     }
 
     public String url_type() {
@@ -81,7 +99,14 @@ public class Method {
         return columnWidth;
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public void changeStatusBarColor() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = activity.getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.TRANSPARENT);
+        }
+    }
+
     public void setStatusBarGradiant() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             activity.getWindow().getDecorView().setSystemUiVisibility(

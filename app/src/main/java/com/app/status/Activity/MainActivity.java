@@ -19,6 +19,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.app.status.Adapter.ViewPagerAdapter;
 import com.app.status.R;
+import com.app.status.Util.Method;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
@@ -32,19 +33,27 @@ import com.karumi.dexter.listener.single.PermissionListener;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, PermissionListener {
 
+    private Method method;
     public MaterialToolbar toolbar;
-    public ViewPager viewPager;
-    public TabLayout tabLayout;
-    public String[] pageTitle = {"Image", "Video", "Download"};
-    public DrawerLayout drawer;
-    public NavigationView navigationView;
-    boolean doubleBackToExitPressedOnce = false;
+    private ViewPager viewPager;
+    private TabLayout tabLayout;
+    private DrawerLayout drawer;
+    private String[] pageTitle;
+    private NavigationView navigationView;
     private ViewPagerAdapter pagerAdapter;
+    private boolean doubleBackToExitPressedOnce = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        method = new Method(MainActivity.this);
+        method.forceRTLIfSupported();
+
+        pageTitle = new String[]{getResources().getString(R.string.image),
+                getResources().getString(R.string.video),
+                getResources().getString(R.string.download)};
 
         toolbar = findViewById(R.id.toolbar_main);
         viewPager = findViewById(R.id.view_pager);
@@ -165,13 +174,15 @@ public class MainActivity extends AppCompatActivity
             case R.id.share:
                 select(3);
                 try {
-                    Intent i = new Intent(Intent.ACTION_SEND);
-                    i.setType("text/plain");
-                    i.putExtra(Intent.EXTRA_SUBJECT, "My application name");
-                    String sAux = "\n" + getResources().getString(R.string.Let_me_recommend_you_this_application) + "\n\n";
-                    sAux = sAux + "https://play.google.com/store/apps/details?id=" + getApplication().getPackageName();
-                    i.putExtra(Intent.EXTRA_TEXT, sAux);
-                    startActivity(Intent.createChooser(i, "choose one"));
+
+                    String string = getResources().getString(R.string.Let_me_recommend_you_this_application) + "\n\n" + "https://play.google.com/store/apps/details?id=" + getApplication().getPackageName();
+
+                    Intent intent = new Intent(Intent.ACTION_SEND);
+                    intent.setType("text/plain");
+                    intent.putExtra(Intent.EXTRA_TEXT, string);
+                    intent.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.app_name));
+                    startActivity(Intent.createChooser(intent, getResources().getString(R.string.choose_one)));
+
                 } catch (Exception e) {
                     //e.toString();
                 }
@@ -201,7 +212,7 @@ public class MainActivity extends AppCompatActivity
 
             case R.id.privacy_policy:
                 select(6);
-                startActivity(new Intent(MainActivity.this, Privacy_Policy.class));
+                startActivity(new Intent(MainActivity.this, PrivacyPolicy.class));
                 return true;
 
             default:

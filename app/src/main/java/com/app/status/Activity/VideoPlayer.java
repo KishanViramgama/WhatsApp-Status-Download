@@ -1,19 +1,17 @@
 package com.app.status.Activity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.app.status.R;
+import com.app.status.Util.Method;
 import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.Player;
@@ -30,6 +28,7 @@ import java.io.File;
 
 public class VideoPlayer extends AppCompatActivity {
 
+    private Method method;
     private SimpleExoPlayer player;
     private PlayerView playerView;
     private ProgressBar progressBar;
@@ -44,14 +43,12 @@ public class VideoPlayer extends AppCompatActivity {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         }
 
-        // making notification bar transparent
-        changeStatusBarColor();
+        method = new Method(VideoPlayer.this);
+        method.forceRTLIfSupported();
+        method.changeStatusBarColor();
 
         Intent intent = getIntent();
         String videoLink = intent.getStringExtra("link");
-
-        assert videoLink != null;
-        Log.d("videoLink", videoLink);
 
         playerView = findViewById(R.id.player_view);
         progressBar = findViewById(R.id.progressBar_video_play);
@@ -114,17 +111,6 @@ public class VideoPlayer extends AppCompatActivity {
             player.release();
         }
         super.onDestroy();
-    }
-
-    /**
-     * Making notification bar transparent
-     */
-    private void changeStatusBarColor() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.TRANSPARENT);
-        }
     }
 
 }

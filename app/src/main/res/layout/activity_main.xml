@@ -7,18 +7,22 @@
     android:layout_height="match_parent"
     tools:openDrawer="start">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.appbar.AppBarLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/toolbar_color"
+                android:background="@color/toolbar"
                 android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
                 <com.google.android.material.appbar.MaterialToolbar
@@ -36,12 +40,12 @@
                     android:id="@+id/tab_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/toolbar"
                     app:elevation="0dp"
-                    android:background="@color/toolbar_color"
                     app:tabIndicatorColor="@color/tab_indicator"
+                    app:tabIndicatorHeight="5dp"
                     app:tabSelectedTextColor="@color/white"
-                    app:tabTextColor="@color/tabView_text"
-                    app:tabIndicatorHeight="5dp" />
+                    app:tabTextColor="@color/tabView_text" />
 
             </com.google.android.material.appbar.AppBarLayout>
 
@@ -53,7 +57,7 @@
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
@@ -62,8 +66,8 @@
         android:fitsSystemWindows="true"
         android:layout_gravity="start"
         android:background="@color/nav_drawer"
-        app:itemIconTint="@drawable/drawar_select_imagecolor"
-        app:itemTextColor="@drawable/drawar_select_textcolor"
+        app:itemIconTint="@drawable/drawer_select_image"
+        app:itemTextColor="@drawable/drawer_select_text"
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/activity_main_drawer" />
 

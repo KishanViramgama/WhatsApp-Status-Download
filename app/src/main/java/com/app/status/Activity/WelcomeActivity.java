@@ -1,15 +1,11 @@
 package com.app.status.Activity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,30 +14,27 @@ import androidx.viewpager.widget.ViewPager;
 import com.app.status.Adapter.MyViewPagerAdapter;
 import com.app.status.R;
 import com.app.status.Util.Method;
-import com.app.status.Util.PrefManager;
 import com.google.android.material.textview.MaterialTextView;
 
 public class WelcomeActivity extends AppCompatActivity {
 
-    private ViewPager viewPager;
-    private MyViewPagerAdapter myViewPagerAdapter;
-    private LinearLayout dotsLayout;
-    private TextView[] dots;
-    private int[] layouts;
     private Method method;
-    private ProgressBar progressBar;
+    private int[] layouts;
+    private TextView[] dots;
+    private ViewPager viewPager;
+    private LinearLayout dotsLayout;
+    private MyViewPagerAdapter myViewPagerAdapter;
     private MaterialTextView textView_Skip, textView_Next;
-    private PrefManager prefManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         method = new Method(WelcomeActivity.this);
+        method.forceRTLIfSupported();
 
         // Checking for first time launch - before calling setContentView()
-        prefManager = new PrefManager(this);
-        if (!prefManager.isFirstTimeLaunch()) {
+        if (!method.isFirstTimeLaunch()) {
             startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
             finish();
         }
@@ -54,13 +47,9 @@ public class WelcomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_welcome);
 
         viewPager = findViewById(R.id.view_pager);
-        progressBar = findViewById(R.id.progressbar_welcome);
         dotsLayout = findViewById(R.id.layoutDots);
         textView_Skip = findViewById(R.id.btn_skip);
         textView_Next = findViewById(R.id.btn_next);
-
-        progressBar.getIndeterminateDrawable().setColorFilter(getResources().getColor(R.color.white), android.graphics.PorterDuff.Mode.MULTIPLY);
-        progressBar.setVisibility(View.GONE);
 
         // layouts of all welcome sliders
         // add few more layouts if you want
@@ -68,12 +57,11 @@ public class WelcomeActivity extends AppCompatActivity {
                 R.layout.welcome_slide_one,
                 R.layout.welcome_slide_two,};
 
-
         // adding bottom dots
         addBottomDots(0);
 
         // making notification bar transparent
-        changeStatusBarColor();
+        method.changeStatusBarColor();
 
         myViewPagerAdapter = new MyViewPagerAdapter(WelcomeActivity.this, layouts);
         viewPager.setAdapter(myViewPagerAdapter);
@@ -96,7 +84,6 @@ public class WelcomeActivity extends AppCompatActivity {
                     // move to next screen
                     viewPager.setCurrentItem(current);
                 } else {
-                    progressBar.setVisibility(View.VISIBLE);
                     launchHomeScreen();
                 }
             }
@@ -129,8 +116,7 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     private void launchHomeScreen() {
-        prefManager.setFirstTimeLaunch(false);
-        progressBar.setVisibility(View.GONE);
+        method.setFirstTimeLaunch(false);
         startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
         finish();
     }
@@ -164,16 +150,5 @@ public class WelcomeActivity extends AppCompatActivity {
 
         }
     };
-
-    /**
-     * Making notification bar transparent
-     */
-    private void changeStatusBarColor() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.TRANSPARENT);
-        }
-    }
 
 }

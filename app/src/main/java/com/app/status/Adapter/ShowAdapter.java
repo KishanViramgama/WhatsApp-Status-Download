@@ -61,7 +61,7 @@ public class ShowAdapter extends PagerAdapter {
         });
 
         Glide.with(activity).load(string.get(position).toString())
-                .placeholder(R.drawable.place_holder)
+                .placeholder(R.drawable.place_landscap)
                 .into(touchImageView);
 
         container.addView(view);

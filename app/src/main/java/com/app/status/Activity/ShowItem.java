@@ -43,17 +43,17 @@ import java.util.Random;
 
 public class ShowItem extends AppCompatActivity {
 
+    private Method method;
+    private String type;
+    private File file;
+    private Bitmap bitmap;
+    private Animation myAnim;
+    private Uri resultUri, uri;
+    private int selectedPosition = 0;
     private MaterialToolbar toolbar;
     private ViewPager viewPager;
     private ShowAdapter showAdapter;
-    private String type;
-    private int selectedPosition = 0;
-    private Bitmap mbitmap;
-    private Uri resultUri, uri;
-    private File file;
     private List<File> showArray;
-    private Method method;
-    private Animation myAnim;
     private ProgressDialog progressDialog;
     private ImageView imageView_one, imageView_two, imageView_three;
     private ImageView imageView_download, imageView_setWallpaper, imageView_profile, imageView_delete, imageView_share;
@@ -69,6 +69,7 @@ public class ShowItem extends AppCompatActivity {
         type = in.getStringExtra("type");
 
         method = new Method(ShowItem.this);
+        method.forceRTLIfSupported();
         method.setStatusBarGradiant();
         progressDialog = new ProgressDialog(ShowItem.this);
 
@@ -251,14 +252,14 @@ public class ShowItem extends AppCompatActivity {
         protected String doInBackground(String... params) {
 
             String path = params[0];
-            mbitmap = BitmapFactory.decodeFile(path);
+            bitmap = BitmapFactory.decodeFile(path);
             return null;
         }
 
         @Override
         protected void onPostExecute(String s) {
 
-            croup_storeImage(mbitmap);
+            croup_storeImage(bitmap);
             progressDialog.hide();
 
             super.onPostExecute(s);

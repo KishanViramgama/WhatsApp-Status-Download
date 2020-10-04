@@ -4,6 +4,8 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <string name="isRTL">false</string>
+
     <string name="play_more_app">https://play.google.com/store/apps</string>
 
     <string name="image">Image</string>
@@ -13,10 +15,10 @@
     <string name="share_app">Share App</string>
     <string name="privacy_policy">Privacy Policy</string>
 
-    <string name="Please_click_BACK_again_to_exit">Please click BACK again to exit</string>
     <string name="exit">Exit</string>
-
+    <string name="Please_click_BACK_again_to_exit">Please click BACK again to exit</string>
     <string name="Let_me_recommend_you_this_application">Let me recommend you this application</string>
+
     <string name="download">Download</string>
     <string name="set_as_wallpaper">Set Wallpaper</string>
     <string name="profile">profile</string>
@@ -31,5 +33,6 @@
     <string name="allow_permission">Allow permission</string>
     <string name="intro_one">intro one</string>
     <string name="intro_two">intro two</string>
+    <string name="choose_one">Choose one</string>
 
 </resources>

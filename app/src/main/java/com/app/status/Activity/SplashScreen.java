@@ -1,13 +1,10 @@
 package com.app.status.Activity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,10 +16,7 @@ import com.app.status.Util.Method;
 public class SplashScreen extends AppCompatActivity {
 
     private Method method;
-    // splash screen timer
-    private static int SPLASH_TIME_OUT = 2000;
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,10 +29,11 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         method = new Method(SplashScreen.this);
+        method.forceRTLIfSupported();
+        method.changeStatusBarColor();
 
-        // making notification bar transparent
-        changeStatusBarColor();
-
+        // splash screen timer
+        int SPLASH_TIME_OUT = 2000;
         new Handler().postDelayed(new Runnable() {
 
             /*
@@ -62,26 +57,12 @@ public class SplashScreen extends AppCompatActivity {
                     method.editor.commit();
                 }
 
-                Intent i = new Intent(SplashScreen.this, WelcomeActivity.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(i);
-                // close this activity
-                finish();
+                startActivity(new Intent(SplashScreen.this, WelcomeActivity.class));
+                finishAffinity();
 
             }
         }, SPLASH_TIME_OUT);
 
-    }
-
-    /**
-     * Making notification bar transparent
-     */
-    private void changeStatusBarColor() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.TRANSPARENT);
-        }
     }
 
 }

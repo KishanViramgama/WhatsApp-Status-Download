@@ -116,6 +116,7 @@ public class TouchImageView extends ImageView {
         sharedConstructing(context);
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private void sharedConstructing(Context context) {
         super.setClickable(true);
         this.context = context;

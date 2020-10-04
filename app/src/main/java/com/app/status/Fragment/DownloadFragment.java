@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -23,6 +22,7 @@ import com.app.status.Interface.OnClick;
 import com.app.status.R;
 import com.app.status.Util.Constant;
 import com.app.status.Util.Method;
+import com.google.android.material.textview.MaterialTextView;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -34,13 +34,13 @@ import java.util.Queue;
 public class DownloadFragment extends Fragment {
 
     private Method method;
+    private OnClick onClick;
+    private String root;
+    private File file;
     private ProgressBar progressBar;
     private RecyclerView recyclerView;
     private ViewAdapter viewAdapter;
-    private TextView textViewNoData;
-    private String root;
-    private File file;
-    private OnClick onClick;
+    private MaterialTextView textView_noData;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -56,8 +56,8 @@ public class DownloadFragment extends Fragment {
 
         progressBar = view.findViewById(R.id.progressbar_fragment);
         recyclerView = view.findViewById(R.id.recyclerView_fragment);
-        textViewNoData = view.findViewById(R.id.textView_nodata_fragment);
-        textViewNoData.setVisibility(View.GONE);
+        textView_noData = view.findViewById(R.id.textView_noData_fragment);
+        textView_noData.setVisibility(View.GONE);
         progressBar.setVisibility(View.GONE);
 
         recyclerView.setHasFixedSize(true);
@@ -78,9 +78,9 @@ public class DownloadFragment extends Fragment {
         viewAdapter = new ViewAdapter(getActivity(), Constant.download, "all", method);
 
         if (Constant.download.size() == 0) {
-            textViewNoData.setVisibility(View.VISIBLE);
+            textView_noData.setVisibility(View.VISIBLE);
         } else {
-            textViewNoData.setVisibility(View.GONE);
+            textView_noData.setVisibility(View.GONE);
             recyclerView.setAdapter(viewAdapter);
         }
 
@@ -92,8 +92,7 @@ public class DownloadFragment extends Fragment {
 
         List<File> inFiles = new ArrayList<>();
         try {
-            Queue<File> files = new LinkedList<>();
-            files.addAll(Arrays.asList(parentDir.listFiles()));
+            Queue<File> files = new LinkedList<>(Arrays.asList(parentDir.listFiles()));
             while (!files.isEmpty()) {
                 File file = files.remove();
                 if (file.isDirectory()) {
@@ -115,9 +114,9 @@ public class DownloadFragment extends Fragment {
         Constant.download = getListFiles(file);
         if (viewAdapter != null && method != null) {
             if (Constant.download.size() == 0) {
-                textViewNoData.setVisibility(View.VISIBLE);
+                textView_noData.setVisibility(View.VISIBLE);
             } else {
-                textViewNoData.setVisibility(View.GONE);
+                textView_noData.setVisibility(View.GONE);
                 viewAdapter = new ViewAdapter(getActivity(), Constant.download, "all", method);
                 recyclerView.setAdapter(viewAdapter);
             }
