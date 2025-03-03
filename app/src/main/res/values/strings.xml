@@ -1,38 +1,48 @@
 <resources>
+
     <string name="app_name">Status</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="setting">Setting</string>
 
-    <string name="isRTL">false</string>
-
-    <string name="play_more_app">https://play.google.com/store/apps</string>
-
-    <string name="image">Image</string>
-    <string name="video">Video</string>
+    <string name="choose_one">Choose one</string>
+    <string name="wrong">Some thing went to wrong</string>
+    <string name="playMoreApp">https://play.google.com/store/apps/developer?id=Krishna+app+worlds</string>
+    <string name="Let_me_recommend_you_this_application">Let me recommend you this application</string>
+    <string name="aboutUs">AboutUs</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="share_app">Share App</string>
     <string name="rate_app">Rate App</string>
     <string name="more_app">More App</string>
-    <string name="share_app">Share App</string>
-    <string name="privacy_policy">Privacy Policy</string>
+    <string name="cancel">Cancel</string>
+    <string name="permission">Permission</string>
+    <string name="permission_msg">Need your permission for access this application</string>
+    <string name="allow">Allow</string>
 
-    <string name="exit">Exit</string>
-    <string name="Please_click_BACK_again_to_exit">Please click BACK again to exit</string>
-    <string name="Let_me_recommend_you_this_application">Let me recommend you this application</string>
-
-    <string name="download">Download</string>
-    <string name="set_as_wallpaper">Set Wallpaper</string>
-    <string name="profile">profile</string>
-    <string name="delete">Delete</string>
-    <string name="no_data">No Data Found</string>
+    <string name="need_permission_access_folder">We need a .status permission to get your status</string>
+    <string name="ok">OK</string>
     <string name="share">Share</string>
-    <string name="loading">Loading....</string>
-    <string name="start">Start</string>
-    <string name="next">Next</string>
-    <string name="skip">Skip</string>
-    <string name="pleas_allow_permission">Pleas allow permission</string>
-    <string name="allow_permission">Allow permission</string>
-    <string name="intro_one">intro one</string>
-    <string name="intro_two">intro two</string>
-    <string name="choose_one">Choose one</string>
+    <string name="wallpaper">Wallpaper</string>
+    <string name="download">Download</string>
+
+    <string name="share_to">Share to</string>
+    <string name="delete">Delete</string>
+
+    <string name="install_app">WhatsApp Messenger And WhatsApp Business applications are not installed that\'s why this application\'s features are not working.</string>
+    <string name="delete_conformation">Delete conformation message</string>
+    <string name="delete_conformation_msg">Are you sure you want to delete this item</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="no_data_found">No Data Found</string>
+    <string name="default_notification_channel_id">Status</string>
+    <string name="them">Them</string>
+    <string name="version">Version</string>
+    <string name="email">Email</string>
+    <string name="home">Home</string>
+    <string name="settings">Settings</string>
+    <string name="video">Video</string>
+    <string name="image">Image</string>
+
+    <string name="emailId">test@test.test</string>
+    <string name="aboutUsDetail">About us details</string>
 
 </resources>
